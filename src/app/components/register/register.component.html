@@ -1,0 +1,332 @@
+<div class="container margen">
+	<div class="container">
+		<div class="row">
+			<div class="col-11">
+				<h3><strong>Registros de jugadores</strong></h3>
+			</div>
+			<div class="col-1">
+				<button mat-raised-button (click)="onRegresar()" type="button" color="primary">Regresar</button>
+			</div>
+		</div>
+	</div>
+	
+	<br>
+	<mat-divider></mat-divider>
+
+	<mat-horizontal-stepper #stepper>
+
+	  <mat-step [stepControl]="firstFormGroup" errorMessage="Algunos campos son requeridos">
+	    <form [formGroup]="firstFormGroup">
+	      <ng-template matStepLabel>Campos del Jugador</ng-template>
+
+	      <div class="container">
+
+	      	<div class="row">
+
+	      		<div class="col">
+	      			
+				    <mat-form-field hintLabel="Maximo 20 caracteres" appearance="fill">
+					    <mat-label>Primer Nombre</mat-label>
+					    <input autofocus class="upper" matInput #inputname minlength="3" maxlength="20"
+					    	   formControlName="firstName">
+					    <mat-hint align="end">{{inputname.value?.length || 0}}/20</mat-hint>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			
+
+				     <mat-form-field hintLabel="Maximo 20 caracteres" appearance="fill">
+					    <mat-label>Apellido</mat-label>
+					    <input class="upper" matInput #input minlength="3" maxlength="20"
+					    	   formControlName="apellido">
+					    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+
+				    <mat-form-field appearance="fill">
+					    <mat-label>Altura Pulgadas</mat-label>
+					    <input onKeyPress="if(this.value.length==2) return false;"
+					    	 formControlName="altPul" matInput type="number" class="example-right-align">
+					    <span matSuffix>,00</span>
+					</mat-form-field>
+
+	      		</div>
+
+	      	</div>
+
+	      	<div class="row">
+
+	      		<div class="col">
+	      			
+				     <mat-form-field appearance="fill">
+					    <mat-label>Altura Pies</mat-label>
+					    <input onKeyPress="if(this.value.length==2) return false;" formControlName="altPies" matInput type="number" class="example-right-align">
+					    <span matSuffix>,00</span>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			 <mat-form-field appearance="fill">
+					    <mat-label>Peso</mat-label>
+					    <input onKeyPress="if(this.value.length==2) return false;" formControlName="peso" matInput type="number" class="example-right-align">
+					    <span matSuffix>,00</span>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			<mat-form-field appearance="fill">
+					  <mat-label>Fecha de Nacimiento</mat-label>
+					  <input matInput [(ngModel)]="birthdate" [matDatepicker]="picker" formControlName="fecha">
+					  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					  <mat-datepicker #picker></mat-datepicker>
+
+					</mat-form-field>
+					<button mat-raised-button type="button" (click)="CalculateAge()" color="primary">Calcular Edad</button>
+					
+
+	      		</div>
+
+	      		<div class="col">
+	      			<mat-form-field>
+				        <mat-label>Edad</mat-label>
+				        <input [disabled]="disabled" matInput formControlName="edad" value="{{age}}" [(ngModel)]="age">
+				    </mat-form-field>
+	      		</div>
+
+	      	</div>
+
+	      	<div class="row">
+	      		<div class="col-6">
+	      			<mat-form-field appearance="fill">
+					    <mat-label>Posicion</mat-label>
+					    <mat-select [(ngModel)]="selectedValue" required formControlName="posicion" name="posicion">
+					      <mat-option *ngFor="let posicion of posiciones" [value]="posicion.value">
+					        {{posicion.viewValue}}
+					      </mat-option>
+					    </mat-select>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col-6" *ngIf="selectedValue === '2'">
+	      			<h3>Otras posiciones en las que ha jugado</h3>
+
+	      			<div class="row">
+	      				<div class="col">
+	      					<div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+							    <label class="form-check-label" for="exampleCheck1">A</label>
+							</div>
+	      				</div>
+
+	      				<div class="col">
+	      					<div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+							    <label class="form-check-label" for="exampleCheck2">B</label>
+							</div>
+	      				</div>
+
+	      				<div class="col">
+	      					<div class="form-check">
+							    <input checked="checked" type="checkbox" class="form-check-input" id="exampleCheck3">
+							    <label class="form-check-label" for="exampleCheck3">C</label>
+							</div>
+	      				</div>
+
+	      				<div class="col">
+	      					<div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck4">
+							    <label class="form-check-label" for="exampleCheck4">D</label>
+							</div>
+	      				</div>
+
+	      				<div class="col">
+	      					<div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck5">
+							    <label class="form-check-label" for="exampleCheck5">E</label>
+							</div>
+	      				</div>
+
+	      			</div>
+
+
+	      		</div>
+
+	      	</div>
+
+	      </div>	      
+
+	      <div>	        
+	        <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+	      </div>
+
+	    </form>
+	  </mat-step>
+
+	  <mat-step [stepControl]="secondFormGroup" errorMessage="Algunos campos son requeridos">
+
+	    <form [formGroup]="secondFormGroup">
+	      <ng-template matStepLabel>Campos del Equipo</ng-template>
+
+	      <div class="container">
+	      	<div class="row">
+	      		<div class="col">
+	      			<mat-form-field>
+				        <mat-label>Abreviatura</mat-label>
+				        <input #inputabre autofocus [(ngModel)]="newItem.abbreviation" matInput placeholder="Abreviatura" formControlName="abbreviation">
+				    </mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			<mat-form-field appearance="fill">
+					    <mat-label>Conferencia</mat-label>
+					    <mat-select [(ngModel)]="newItem.conference" formControlName="conference" name="conference">
+					      <mat-option *ngFor="let conferencia of conferencias" [value]="conferencia.value">
+					        {{conferencia.viewValue}}
+					      </mat-option>
+					    </mat-select>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			<mat-form-field class="example-full-width">
+					    <mat-label>Comentarios</mat-label>
+					    <textarea [(ngModel)]="newItem.comentary" matInput placeholder="Comentarios" formControlName="comentary"></textarea>
+					</mat-form-field>
+	      		</div>
+
+	      	</div>	
+
+	      	<div class="row">
+
+	      		<div class="col">
+	      			<mat-form-field>
+				        <mat-label>Nombre Equipo</mat-label>
+				        <input [(ngModel)]="newItem.name_team" matInput placeholder="Nombre Equipo" formControlName="name_team">
+				    </mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			<mat-form-field appearance="fill">
+					    <mat-label>Ciudad</mat-label>
+					    <mat-select [(ngModel)]="newItem.city" formControlName="city" name="city">
+					      <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.value">
+					        {{ciudad.viewValue}}
+					      </mat-option>
+					    </mat-select>
+					</mat-form-field>
+	      		</div>
+
+	      		<div class="col">
+	      			<button type="submit" (click)="AddItem()" mat-raised-button color="primary">Agregar</button>
+	      		</div>
+
+	      	</div>
+	      		
+	      	
+
+	      </div>
+	      <mat-divider></mat-divider>
+
+	      <table class="table table-hover">
+	      		<thead>
+					<tr>
+						<th class="text-center">Abreviatura</th>							
+						<th class="text-center">Nombre Equipo</th>
+						<th class="text-center">Conferencia</th>						
+						<th class="text-center">Ciudad</th>
+						<th class="text-center">Comentarios</th>						
+						<th class="text-center">Acciones</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr *ngFor="let data of myItems;let i= index">
+						<th class="text-center">{{ data.abbreviation }}</th>		
+						<th class="text-center">{{ data.name_team }}</th>
+						<th class="text-center">{{ data.conference }}</th>
+						<th class="text-center">{{ data.city }}</th>
+						<th class="text-center">{{ data.comentary }}</th>
+						<th>
+							<a mat-icon-button color="primary">
+					            <mat-icon color="primary">delete</mat-icon>
+					        </a>
+						</th>
+					</tr>
+				</tbody>
+	      </table>
+
+	      <!--<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+			 
+
+		
+			  <ng-container matColumnDef="abbreviation">
+			    <th mat-header-cell *matHeaderCellDef> Abreviatura </th>
+			    <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>
+			  </ng-container>
+
+			
+			  <ng-container matColumnDef="name_team">
+			    <th mat-header-cell *matHeaderCellDef> Nombre Equipo </th>
+			    <td mat-cell *matCellDef="let element"> {{element.name_team}} </td>
+			  </ng-container>
+
+			  
+			  <ng-container matColumnDef="conference">
+			    <th mat-header-cell *matHeaderCellDef> Conferencia </th>
+			    <td mat-cell *matCellDef="let element"> {{element.conference}} </td>
+			  </ng-container>
+
+			 
+			  <ng-container matColumnDef="city">
+			    <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+			    <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+			  </ng-container>
+
+			   
+			  <ng-container matColumnDef="comentary">
+			    <th mat-header-cell *matHeaderCellDef> Comentarios </th>
+			    <td mat-cell *matCellDef="let element"> {{element.comentary}} </td>
+			  </ng-container>
+
+			  <ng-container matColumnDef="actions">
+		        <th mat-header-cell *matHeaderCellDef style="font-size:1rem">Acciones</th>
+		        <td mat-cell *matCellDef="let row">
+		          <a mat-icon-button color="primary">
+		            <mat-icon color="primary">delete</mat-icon>
+		          </a></td>
+		      </ng-container>
+
+			  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		  </table>-->
+
+
+
+	      
+	      <div>
+	        
+	        <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+	        <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+	      </div>
+	    </form>
+	  </mat-step>
+
+	  <mat-step>
+	    <ng-template matStepLabel>Hecho</ng-template>
+	    <p>Ya ha terminado..</p>
+	    <div>
+	      <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+	      <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+	      <button mat-raised-button color="warn" (click)="openSnackBar()">Guardar</button>
+	    </div>
+	  </mat-step>
+
+	</mat-horizontal-stepper>
+
+
+</div>
+

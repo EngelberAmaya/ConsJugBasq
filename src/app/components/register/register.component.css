@@ -1,0 +1,25 @@
+.mat-form-field {
+  margin-top: 16px;
+}
+
+
+table {
+  width: 100%;
+}
+
+.upper {
+	text-transform: uppercase;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

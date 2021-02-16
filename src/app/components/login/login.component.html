@@ -1,0 +1,52 @@
+<div class="card-no-border">
+	
+     <section id="wrapper">
+        <div class="login-register" style="background-image:url(../../../assets/img/fondo2.png);">
+            <div class="login-box card">
+                <div class="card-body">
+                    <form [formGroup]="forma" class="form-horizontal form-material" (ngSubmit)="acceder()" id="loginform">
+                        <h3 class="box-title m-b-20">SIGN IN</h3>
+                        <h1 class="box-title m-b-20">Welcome!</h1>
+                        <br><br>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input pattern="[a-z]{1,35}" class="form-control" type="text" required
+                                 placeholder="Usuario" formControlName="usuario" name="usuario">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="password" required
+                                 placeholder="Password" formControlName="password" name="password">
+                            </div>
+                        </div>
+
+                         <div class="form-group row">
+		                    <div class="col-md-12">
+		                        <div class="checkbox checkbox-primary p-t-0">
+
+		                            <input id="checkbox-signup" required 
+		                                    type="checkbox"
+		                                    formControlName="condiciones"
+		                                    name="condiciones"
+		                                    >
+
+		                            <label for="checkbox-signup">Estoy de acuerdo con los <a href="#">términos</a></label>
+		                        </div>
+		                    </div>
+		                </div>
+
+                        <div class="form-group text-center">
+                            <div class="col-xs-12 p-b-20">
+                                <button [disabled]="forma.invalid" class="btn btn-block btn-lg btn-info btn-rounded" routerLink="/see" type="submit">Sign In</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

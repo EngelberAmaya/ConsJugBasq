@@ -1,0 +1,47 @@
+<!--<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" #sidenav opened position="start">
+    
+    <h1><strong>Menú</strong></h1>
+    
+  <div>
+    <mat-nav-list>
+
+      <a mat-list-item routerLink="/register">
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        Registro
+      </a>
+      <a mat-list-item routerLink="/data">
+        <mat-icon mat-list-icon>format_indent_increase</mat-icon>
+        Consultas
+      </a>
+      
+    </mat-nav-list>
+
+  </div>
+    
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon class="bot">menu</mat-icon>
+      </button>
+      My Application
+      <span class="toolbar-spacer"></span>
+      My Account-
+    </mat-toolbar>
+   
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>-->
+<div style="background-image: url(../../../assets/img/fondo2.png);">
+    <app-navbar></app-navbar>
+    
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+
+
+
+
