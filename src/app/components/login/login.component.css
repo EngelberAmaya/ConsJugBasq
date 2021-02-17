@@ -1,0 +1,17 @@
+a, a:hover{
+  color:#333
+}
+
+.placeholder{
+    position: absolute;
+    top: 18px;
+    bottom: 0;
+    height: 24px;
+    font-size: 25px;
+    left: -28px;
+    margin: auto;
+}
+
+.input-placeholder {
+  position: relative;
+}

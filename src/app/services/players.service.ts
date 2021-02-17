@@ -19,7 +19,7 @@ const headers = new HttpHeaders({
 })
 export class PlayersService {
 
-  page = 1;
+  page = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +31,7 @@ export class PlayersService {
 
   getAllPlayers(){
 
-    //this.page++;
+    this.page++;
   	
   	return this.ejecutarQuery<PlayersResponse>(`/players?page=${this.page}`);
   }

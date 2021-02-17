@@ -19,10 +19,6 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-  { 
-    path: 'player/:id',
-    component: DetailComponent
-  },
   {
     path: 'data',
     component: DataPlayersComponent

@@ -15,12 +15,20 @@
                                  placeholder="Usuario" formControlName="usuario" name="usuario">
                             </div>
                         </div>
-                        <div class="form-group">
+
+                        
+                        <!--<div class="form-group">
                             <div class="col-xs-12">
                                 <input class="form-control" type="password" required
                                  placeholder="Password" formControlName="password" name="password">
                             </div>
-                        </div>
+                        </div>--> 
+
+                       <span class="input-placeholder">
+                            <input class="form-control" style="float: left" [(ngModel)]="password" type="password" id="inputPassword" formControlName="password" name="password" [type]="hide ? 'password' : 'text'" placeholder="Password" required>
+                            <mat-icon class="placeholder" (click)="myFunction()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                       </span>
+
 
                          <div class="form-group row">
 		                    <div class="col-md-12">
@@ -36,6 +44,8 @@
 		                        </div>
 		                    </div>
 		                </div>
+
+
 
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">

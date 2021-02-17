@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 
   // Recuerde cambiar su apikey
-  apiKey: 'tuapiKey',
+  apiKey: 'tuapikey',
   apiUrl: 'https://free-nba.p.rapidapi.com'
 };
 
